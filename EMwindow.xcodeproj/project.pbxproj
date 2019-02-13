@@ -7,35 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CC5F4C2703B7FBADAB4FADB /* Pods_EMwindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50760B098506E313CB970F3D /* Pods_EMwindow.framework */; };
+		6531341B2119120F00E0B103 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6531341A2119120F00E0B103 /* Launch Screen.storyboard */; };
+		65325B2F210264940063C460 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65325B2E210264940063C460 /* HomeScreen.swift */; };
+		65325B3121026C970063C460 /* HospitalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65325B3021026C970063C460 /* HospitalMap.swift */; };
+		6565B505211B7EF100FC9836 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6565B504211B7EF100FC9836 /* CustomAnnotation.swift */; };
+		65962049218FDE6500C6C23D /* HospitalInfoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */; };
 		65F377E620B0C18B00796EDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F377E520B0C18B00796EDF /* AppDelegate.swift */; };
-		65F377E820B0C18B00796EDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F377E720B0C18B00796EDF /* ViewController.swift */; };
+		65F377E820B0C18B00796EDF /* HospitalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F377E720B0C18B00796EDF /* HospitalInfo.swift */; };
 		65F377EB20B0C18B00796EDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F377E920B0C18B00796EDF /* Main.storyboard */; };
 		65F377ED20B0C18E00796EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F377EC20B0C18E00796EDF /* Assets.xcassets */; };
-		65F377F020B0C18E00796EDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F377EE20B0C18E00796EDF /* LaunchScreen.storyboard */; };
-		65F377FB20B0C18E00796EDF /* EMwindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F377FA20B0C18E00796EDF /* EMwindowTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		65F377F720B0C18E00796EDF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 65F377DA20B0C18B00796EDF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 65F377E120B0C18B00796EDF;
-			remoteInfo = EMwindow;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		4FCCBFA88828F9118F5D65F9 /* Pods_EMwindowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EMwindowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50760B098506E313CB970F3D /* Pods_EMwindow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EMwindow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6531341A2119120F00E0B103 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		65325B2E210264940063C460 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		65325B3021026C970063C460 /* HospitalMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMap.swift; sourceTree = "<group>"; };
+		6565B504211B7EF100FC9836 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalInfoSettings.swift; sourceTree = "<group>"; };
 		65F377E220B0C18B00796EDF /* EMwindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMwindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F377E520B0C18B00796EDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65F377E720B0C18B00796EDF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65F377E720B0C18B00796EDF /* HospitalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalInfo.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		65F377EA20B0C18B00796EDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65F377EC20B0C18E00796EDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		65F377EF20B0C18E00796EDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65F377F120B0C18E00796EDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65F377F620B0C18E00796EDF /* EMwindowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EMwindowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		65F377FA20B0C18E00796EDF /* EMwindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMwindowTests.swift; sourceTree = "<group>"; };
-		65F377FC20B0C18E00796EDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E712DA1653025446E60BDCB /* Pods-EMwindowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMwindowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMwindowTests/Pods-EMwindowTests.debug.xcconfig"; sourceTree = "<group>"; };
+		842D8D0546E08553518527E5 /* Pods-EMwindow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMwindow.release.xcconfig"; path = "Pods/Target Support Files/Pods-EMwindow/Pods-EMwindow.release.xcconfig"; sourceTree = "<group>"; };
+		A3F36193AC696C6B58C04954 /* Pods-EMwindow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMwindow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMwindow/Pods-EMwindow.debug.xcconfig"; sourceTree = "<group>"; };
+		FF5CB26E62254E45C4BC10DF /* Pods-EMwindowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMwindowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EMwindowTests/Pods-EMwindowTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,13 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65F377F320B0C18E00796EDF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3CC5F4C2703B7FBADAB4FADB /* Pods_EMwindow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				65F377E420B0C18B00796EDF /* EMwindow */,
-				65F377F920B0C18E00796EDF /* EMwindowTests */,
 				65F377E320B0C18B00796EDF /* Products */,
+				80DDB6C5D6C5F92F8FAA74A2 /* Pods */,
+				9263018BCBDB2BD5DFEDCD06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				65F377E220B0C18B00796EDF /* EMwindow.app */,
-				65F377F620B0C18E00796EDF /* EMwindowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,22 +73,37 @@
 			isa = PBXGroup;
 			children = (
 				65F377E520B0C18B00796EDF /* AppDelegate.swift */,
-				65F377E720B0C18B00796EDF /* ViewController.swift */,
+				65325B2E210264940063C460 /* HomeScreen.swift */,
+				65F377E720B0C18B00796EDF /* HospitalInfo.swift */,
+				65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */,
+				65325B3021026C970063C460 /* HospitalMap.swift */,
+				6565B504211B7EF100FC9836 /* CustomAnnotation.swift */,
 				65F377E920B0C18B00796EDF /* Main.storyboard */,
+				6531341A2119120F00E0B103 /* Launch Screen.storyboard */,
 				65F377EC20B0C18E00796EDF /* Assets.xcassets */,
-				65F377EE20B0C18E00796EDF /* LaunchScreen.storyboard */,
 				65F377F120B0C18E00796EDF /* Info.plist */,
 			);
 			path = EMwindow;
 			sourceTree = "<group>";
 		};
-		65F377F920B0C18E00796EDF /* EMwindowTests */ = {
+		80DDB6C5D6C5F92F8FAA74A2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				65F377FA20B0C18E00796EDF /* EMwindowTests.swift */,
-				65F377FC20B0C18E00796EDF /* Info.plist */,
+				A3F36193AC696C6B58C04954 /* Pods-EMwindow.debug.xcconfig */,
+				842D8D0546E08553518527E5 /* Pods-EMwindow.release.xcconfig */,
+				6E712DA1653025446E60BDCB /* Pods-EMwindowTests.debug.xcconfig */,
+				FF5CB26E62254E45C4BC10DF /* Pods-EMwindowTests.release.xcconfig */,
 			);
-			path = EMwindowTests;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9263018BCBDB2BD5DFEDCD06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50760B098506E313CB970F3D /* Pods_EMwindow.framework */,
+				4FCCBFA88828F9118F5D65F9 /* Pods_EMwindowTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65F377FF20B0C18E00796EDF /* Build configuration list for PBXNativeTarget "EMwindow" */;
 			buildPhases = (
+				9BAB396EA63C8459225737D4 /* [CP] Check Pods Manifest.lock */,
 				65F377DE20B0C18B00796EDF /* Sources */,
 				65F377DF20B0C18B00796EDF /* Frameworks */,
 				65F377E020B0C18B00796EDF /* Resources */,
+				A2AC491EAF15B6D534F5979D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -115,24 +127,6 @@
 			productName = EMwindow;
 			productReference = 65F377E220B0C18B00796EDF /* EMwindow.app */;
 			productType = "com.apple.product-type.application";
-		};
-		65F377F520B0C18E00796EDF /* EMwindowTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 65F3780220B0C18E00796EDF /* Build configuration list for PBXNativeTarget "EMwindowTests" */;
-			buildPhases = (
-				65F377F220B0C18E00796EDF /* Sources */,
-				65F377F320B0C18E00796EDF /* Frameworks */,
-				65F377F420B0C18E00796EDF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				65F377F820B0C18E00796EDF /* PBXTargetDependency */,
-			);
-			name = EMwindowTests;
-			productName = EMwindowTests;
-			productReference = 65F377F620B0C18E00796EDF /* EMwindowTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -146,10 +140,7 @@
 				TargetAttributes = {
 					65F377E120B0C18B00796EDF = {
 						CreatedOnToolsVersion = 9.3.1;
-					};
-					65F377F520B0C18E00796EDF = {
-						CreatedOnToolsVersion = 9.3.1;
-						TestTargetID = 65F377E120B0C18B00796EDF;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -167,7 +158,6 @@
 			projectRoot = "";
 			targets = (
 				65F377E120B0C18B00796EDF /* EMwindow */,
-				65F377F520B0C18E00796EDF /* EMwindowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -177,48 +167,72 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F377F020B0C18E00796EDF /* LaunchScreen.storyboard in Resources */,
+				6531341B2119120F00E0B103 /* Launch Screen.storyboard in Resources */,
 				65F377ED20B0C18E00796EDF /* Assets.xcassets in Resources */,
 				65F377EB20B0C18B00796EDF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65F377F420B0C18E00796EDF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9BAB396EA63C8459225737D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EMwindow-checkManifestLockResult.txt",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		A2AC491EAF15B6D534F5979D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EMwindow/Pods-EMwindow-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EMwindow/Pods-EMwindow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65F377DE20B0C18B00796EDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F377E820B0C18B00796EDF /* ViewController.swift in Sources */,
+				65F377E820B0C18B00796EDF /* HospitalInfo.swift in Sources */,
 				65F377E620B0C18B00796EDF /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65F377F220B0C18E00796EDF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65F377FB20B0C18E00796EDF /* EMwindowTests.swift in Sources */,
+				65962049218FDE6500C6C23D /* HospitalInfoSettings.swift in Sources */,
+				6565B505211B7EF100FC9836 /* CustomAnnotation.swift in Sources */,
+				65325B3121026C970063C460 /* HospitalMap.swift in Sources */,
+				65325B2F210264940063C460 /* HomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		65F377F820B0C18E00796EDF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 65F377E120B0C18B00796EDF /* EMwindow */;
-			targetProxy = 65F377F720B0C18E00796EDF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		65F377E920B0C18B00796EDF /* Main.storyboard */ = {
@@ -227,14 +241,6 @@
 				65F377EA20B0C18B00796EDF /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		65F377EE20B0C18E00796EDF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65F377EF20B0C18E00796EDF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -356,9 +362,11 @@
 		};
 		65F3780020B0C18E00796EDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3F36193AC696C6B58C04954 /* Pods-EMwindow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26LV76TZ6M;
 				INFOPLIST_FILE = EMwindow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -366,16 +374,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = caretrails.EMwindow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		65F3780120B0C18E00796EDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 842D8D0546E08553518527E5 /* Pods-EMwindow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26LV76TZ6M;
 				INFOPLIST_FILE = EMwindow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,48 +393,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = caretrails.EMwindow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		65F3780320B0C18E00796EDF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = EMwindowTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = caretrails.EMwindowTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMwindow.app/EMwindow";
-			};
-			name = Debug;
-		};
-		65F3780420B0C18E00796EDF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = EMwindowTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = caretrails.EMwindowTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMwindow.app/EMwindow";
 			};
 			name = Release;
 		};
@@ -445,15 +415,6 @@
 			buildConfigurations = (
 				65F3780020B0C18E00796EDF /* Debug */,
 				65F3780120B0C18E00796EDF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		65F3780220B0C18E00796EDF /* Build configuration list for PBXNativeTarget "EMwindowTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				65F3780320B0C18E00796EDF /* Debug */,
-				65F3780420B0C18E00796EDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
