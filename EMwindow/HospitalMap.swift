@@ -273,7 +273,6 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     // Purpose: GET Process Time Array
     //
     func getProcessTimeArray(day: Int, month: Int, year: Int, hour: Int, minute: Int, hospital: Int) {
-        var processTimeArray: [Double] = []
         
         Alamofire.request("https://emwindow.herokuapp.com/getProcessTimeArray",
                           parameters: ["hospital": hospitalNoSpaces, "month": month,
@@ -359,7 +358,6 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
             processArray = self.processTimeArray3
         }
         
-        
         Alamofire.request("https://emwindow.herokuapp.com/getEMwindowRating",
                           parameters: ["arrivalRateArray": JSON(arrivalArray), "processTimeArray": JSON(processArray), "capacityUtilization": capacityUtilization],
                           headers: ["Content-type": "application/x-www-form-urlencoded"])
@@ -377,7 +375,15 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                     rating = 100;
                 }
                 
-                print(rating)
+                
+                // Update annotations with rating
+                if (hospital == 1) {
+                    
+                } else if (hospital == 2) {
+                    
+                } else {
+                    
+                }
         }
     }
         
