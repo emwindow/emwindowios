@@ -33,6 +33,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var year1: Int = 2018
     var hour1: Int = 9
     var minute1: Int = 0
+    var arrivalRateArray1: [Double] = []
+    var processTimeArray1: [Double] = []
     
     // Hospital 2: UCSF Medical Center
     var day2: Int = 2
@@ -40,6 +42,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var year2: Int = 2018
     var hour2: Int = 9
     var minute2: Int = 0
+    var arrivalRateArray2: [Double] = []
+    var processTimeArray2: [Double] = []
     
     // Hospital 3: UCSF Medical Center
     var day3: Int = 3
@@ -47,6 +51,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var year3: Int = 2018
     var hour3: Int = 9
     var minute3: Int = 0
+    var arrivalRateArray3: [Double] = []
+    var processTimeArray3: [Double] = []
     
     
     
@@ -66,9 +72,9 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
         simulateUser()
         simulateHospitals()
         
-        loadData(day: day1, month: month1, year: year1, hour: hour1, minute: minute1)
-        loadData(day: day2, month: month2, year: year2, hour: hour2, minute: minute2)
-        loadData(day: day3, month: month3, year: year3, hour: hour3, minute: minute3)
+        loadData(day: day1, month: month1, year: year1, hour: hour1, minute: minute1, hospital: 1)
+        loadData(day: day2, month: month2, year: year2, hour: hour2, minute: minute2, hospital: 2)
+        loadData(day: day3, month: month3, year: year3, hour: hour3, minute: minute3, hospital: 3)
         
         //centerOnUser()
     }
@@ -143,7 +149,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     // Purpose: Start timer
     //
     public func startTimer(interval: Int) {
-        timeUpdater = Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(HospitalInfo.updateTime), userInfo: nil, repeats: true)
+        timeUpdater = Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(HospitalMap.updateTime), userInfo: nil, repeats: true)
     }
     
     //
@@ -163,7 +169,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        loadData(day: day1, month: month1, year: year1, hour: hour1, minute: minute1)
+        loadData(day: day1, month: month1, year: year1, hour: hour1, minute: minute1, hospital: 1)
         
         
         // Hospital 2
@@ -179,7 +185,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        loadData(day: day2, month: month2, year: year2, hour: hour2, minute: minute2)
+        loadData(day: day2, month: month2, year: year2, hour: hour2, minute: minute2, hospital: 2)
         
         
         
@@ -196,7 +202,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        loadData(day: day3, month: month3, year: year3, hour: hour3, minute: minute3)
+        loadData(day: day3, month: month3, year: year3, hour: hour3, minute: minute3, hospital: 3)
     }
     
     
@@ -224,16 +230,13 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     //
     // Purpose: Load data
     //
-    func loadData(day: Int, month: Int, year: Int, hour: Int, minute: Int) {
+    func loadData(day: Int, month: Int, year: Int, hour: Int, minute: Int, hospital: Int) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        var arrivalRateArray: [Double] = []
-        var processTimeArray: [Double] = []
-        
-        arrivalRateArray = getArrivalRateArray(day: day, month: month, year: year, hour: hour, minute: minute)
-        processTimeArray = getProcessTimeArray(day: day, month: month, year: year, hour: hour, minute: minute)
-        getCapacityUtilization(day: day, month: month, year: year, hour: hour, minute: minute, arrivalRateArray: arrivalRateArray, processTimeArray: processTimeArray)
+        getArrivalRateArray(day: day, month: month, year: year, hour: hour, minute: minute, hospital: hospital)
+        getProcessTimeArray(day: day, month: month, year: year, hour: hour, minute: minute, hospital: hospital)
+        getCapacityUtilization(day: day, month: month, year: year, hour: hour, minute: minute, hospital: hospital)
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
@@ -242,8 +245,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     //
     // Purpose: GET arrival rate array
     //
-    func getArrivalRateArray(day: Int, month: Int, year: Int, hour: Int, minute: Int) -> [Double] {
-        var arrivalRateArray: [Double] = []
+    func getArrivalRateArray(day: Int, month: Int, year: Int, hour: Int, minute: Int, hospital: Int) {
         
         Alamofire.request("https://emwindow.herokuapp.com/getArrivalRateArray",
                           parameters: ["hospital": hospitalNoSpaces, "month": month,
@@ -257,16 +259,20 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                         return
                 }
                 
-                arrivalRateArray = (value as! NSArray) as! [Double]
+                if (hospital == 1) {
+                    self.arrivalRateArray1 = (value as! NSArray) as! [Double]
+                } else if (hospital == 2) {
+                    self.arrivalRateArray2 = (value as! NSArray) as! [Double]
+                } else {
+                    self.arrivalRateArray3 = (value as! NSArray) as! [Double]
+                }
         }
-        
-        return arrivalRateArray
     }
     
     //
     // Purpose: GET Process Time Array
     //
-    func getProcessTimeArray(day: Int, month: Int, year: Int, hour: Int, minute: Int) -> [Double] {
+    func getProcessTimeArray(day: Int, month: Int, year: Int, hour: Int, minute: Int, hospital: Int) {
         var processTimeArray: [Double] = []
         
         Alamofire.request("https://emwindow.herokuapp.com/getProcessTimeArray",
@@ -283,28 +289,39 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                 
                 let timesArray = value as! NSArray
                 
+                // Reset array
+                if (hospital == 1) {
+                    self.processTimeArray1 = []
+                } else if (hospital == 2) {
+                    self.processTimeArray2 = []
+                } else {
+                    self.processTimeArray3 = []
+                }
+                
                 for time in timesArray {
                     if let n = time as? NSNumber {
                         var time = n.doubleValue
                         
                         if (time < 0) {
-                            print(time)
                             time = time * -1
-                            print(time)
                         }
                         
-                        processTimeArray.append(time)
+                        if (hospital == 1) {
+                            self.processTimeArray1.append(time)
+                        } else if (hospital == 2) {
+                            self.processTimeArray2.append(time)
+                        } else {
+                            self.processTimeArray3.append(time)
+                        }
                     }
                 }
         }
-        
-        return processTimeArray
     }
     
     //
     // Purpose: GET Capacity Utilization
     //
-    func getCapacityUtilization(day: Int, month: Int, year: Int, hour: Int, minute: Int, arrivalRateArray: [Double], processTimeArray: [Double]) {
+    func getCapacityUtilization(day: Int, month: Int, year: Int, hour: Int, minute: Int, hospital: Int) {
         Alamofire.request("https://emwindow.herokuapp.com/getCapacityUtilization",
                           parameters: ["hospital": hospitalNoSpaces, "totalBeds": totalBeds, "month": month,
                                        "day": day, "year": year, "hour": hour, "minute": minute],
@@ -319,16 +336,32 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                 
                 let capacityUtilization = (value as! NSNumber) as! Double
                 
-                self.getEMwindowRating(arrivalRateArray: arrivalRateArray, processTimeArray: processTimeArray, capacityUtilization: capacityUtilization)
+                self.getEMwindowRating(hospital: hospital, capacityUtilization: capacityUtilization)
         }
     }
     
     //
     // Purpose: GET Rating
     //
-    func getEMwindowRating(arrivalRateArray: [Double], processTimeArray: [Double], capacityUtilization: Double) {
+    func getEMwindowRating(hospital: Int, capacityUtilization: Double) {
+        
+        var arrivalArray: [Double] = []
+        var processArray: [Double] = []
+        
+        if (hospital == 1) {
+            arrivalArray = self.arrivalRateArray1
+            processArray = self.processTimeArray1
+        } else if (hospital == 2) {
+            arrivalArray = self.arrivalRateArray2
+            processArray = self.processTimeArray2
+        } else {
+            arrivalArray = self.arrivalRateArray3
+            processArray = self.processTimeArray3
+        }
+        
+        
         Alamofire.request("https://emwindow.herokuapp.com/getEMwindowRating",
-                          parameters: ["arrivalRateArray": JSON(arrivalRateArray), "processTimeArray": JSON(processTimeArray), "capacityUtilization": capacityUtilization],
+                          parameters: ["arrivalRateArray": JSON(arrivalArray), "processTimeArray": JSON(processArray), "capacityUtilization": capacityUtilization],
                           headers: ["Content-type": "application/x-www-form-urlencoded"])
             
             .responseJSON { response in
