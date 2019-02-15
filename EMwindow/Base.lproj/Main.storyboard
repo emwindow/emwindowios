@@ -84,14 +84,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E6C-Bk-xut">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="E6C-Bk-xut" firstAttribute="top" secondItem="mxM-BF-vh1" secondAttribute="top" id="7hQ-6N-TJS"/>
                             <constraint firstItem="E6C-Bk-xut" firstAttribute="leading" secondItem="x6g-x8-5c3" secondAttribute="leading" id="Lcw-ph-kKP"/>
-                            <constraint firstItem="E6C-Bk-xut" firstAttribute="bottom" secondItem="mxM-BF-vh1" secondAttribute="bottom" id="Qzp-rr-MVm"/>
+                            <constraint firstItem="E6C-Bk-xut" firstAttribute="bottom" secondItem="mxM-BF-vh1" secondAttribute="bottom" constant="34" id="Qzp-rr-MVm"/>
                             <constraint firstAttribute="trailing" secondItem="E6C-Bk-xut" secondAttribute="trailing" id="pXP-6A-t37"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mxM-BF-vh1"/>
@@ -120,7 +120,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1246.376811594203" y="437.77173913043481"/>
+            <point key="canvasLocation" x="1246.376811594203" y="437.27678571428572"/>
         </scene>
         <!--Hospital Information-->
         <scene sceneID="tne-QT-ifu">

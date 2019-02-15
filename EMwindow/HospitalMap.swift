@@ -121,7 +121,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     //
     func simulateHospitals() {
         // Hospital 1
-        let hospitalAnnotation1 = CustomAnnotation(title: "UCSF Medical Center",
+        let hospitalAnnotation1 = HospitalAnnotation(title: "UCSF Medical Center",
                                                   locationName: "Main Campus" ,
                                                   discipline: "General Hospital",
                                                   rating: 0,
@@ -129,7 +129,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
         self.mapView.addAnnotation(hospitalAnnotation1)
 
         // Hospital 2
-        let hospitalAnnotation2 = CustomAnnotation(title: "St. Mary's Medical Center",
+        let hospitalAnnotation2 = HospitalAnnotation(title: "St. Mary's Medical Center",
                                                   locationName: "Main Campus" ,
                                                   discipline: "General Hospital",
                                                   rating: 0,
@@ -137,7 +137,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
         self.mapView.addAnnotation(hospitalAnnotation2)
 
         // Hospital 3
-        let hospitalAnnotation3 = CustomAnnotation(title: "California Pacific Medical Center",
+        let hospitalAnnotation3 = HospitalAnnotation(title: "California Pacific Medical Center",
                                                   locationName: "California Campus" ,
                                                   discipline: "General Hospital",
                                                   rating: 0,
@@ -375,14 +375,16 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                     rating = 100;
                 }
                 
-                
                 // Update annotations with rating
                 if (hospital == 1) {
-                    
+//                    MKAnnotationView *annotationView = (id)[mapView viewForAnnotation:annotation];
+//                    if (annotationView) {
+//                        // annotation view for this annotation is available
+//                    }
                 } else if (hospital == 2) {
-                    
+
                 } else {
-                    
+
                 }
         }
     }

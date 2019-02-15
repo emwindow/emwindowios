@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import Contacts
 
-class CustomAnnotation: NSObject, MKAnnotation {
+class HospitalAnnotation: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
     let discipline: String
