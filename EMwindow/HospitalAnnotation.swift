@@ -14,13 +14,13 @@ class HospitalAnnotation: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
     let discipline: String
-    let rating: Double
+    var rating: Int
     let coordinate: CLLocationCoordinate2D
     var imageName: String? {
         return "hospitalAnnotation"
     }
     
-    init(title: String, locationName: String, discipline: String, rating: Double, coordinate: CLLocationCoordinate2D) {
+    init(title: String, locationName: String, discipline: String, rating: Int, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.locationName = locationName
         self.discipline = discipline

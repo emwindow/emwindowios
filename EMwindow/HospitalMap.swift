@@ -35,6 +35,11 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var minute1: Int = 0
     var arrivalRateArray1: [Double] = []
     var processTimeArray1: [Double] = []
+    var hospitalAnnotation1: HospitalAnnotation = HospitalAnnotation(title: "UCSF Medical Center",
+                                                               locationName: "Main Campus" ,
+                                                               discipline: "General Hospital",
+                                                               rating: 0,
+                                                               coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
     
     // Hospital 2: UCSF Medical Center
     var day2: Int = 2
@@ -44,6 +49,11 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var minute2: Int = 0
     var arrivalRateArray2: [Double] = []
     var processTimeArray2: [Double] = []
+    var hospitalAnnotation2: HospitalAnnotation = HospitalAnnotation(title: "St. Mary's Medical Center",
+                                                                                     locationName: "Main Campus" ,
+                                                                                     discipline: "General Hospital",
+                                                                                     rating: 0,
+                                                                                     coordinate: CLLocationCoordinate2D(latitude: 37.7739108, longitude: -122.4544917))
     
     // Hospital 3: UCSF Medical Center
     var day3: Int = 3
@@ -53,6 +63,11 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var minute3: Int = 0
     var arrivalRateArray3: [Double] = []
     var processTimeArray3: [Double] = []
+    var hospitalAnnotation3: HospitalAnnotation = HospitalAnnotation(title: "California Pacific Medical Center",
+                                                                                     locationName: "California Campus" ,
+                                                                                     discipline: "General Hospital",
+                                                                                     rating: 0,
+                                                                                     coordinate: CLLocationCoordinate2D(latitude: 37.786106, longitude: -122.455958))
     
     
     
@@ -120,28 +135,9 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     // Purpose: To simulate map feature with 3 different hospitals displaying information
     //
     func simulateHospitals() {
-        // Hospital 1
-        let hospitalAnnotation1 = HospitalAnnotation(title: "UCSF Medical Center",
-                                                  locationName: "Main Campus" ,
-                                                  discipline: "General Hospital",
-                                                  rating: 0,
-                                                  coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
+        // Add hospital annotations
         self.mapView.addAnnotation(hospitalAnnotation1)
-
-        // Hospital 2
-        let hospitalAnnotation2 = HospitalAnnotation(title: "St. Mary's Medical Center",
-                                                  locationName: "Main Campus" ,
-                                                  discipline: "General Hospital",
-                                                  rating: 0,
-                                                  coordinate: CLLocationCoordinate2D(latitude: 37.7739108, longitude: -122.4544917))
         self.mapView.addAnnotation(hospitalAnnotation2)
-
-        // Hospital 3
-        let hospitalAnnotation3 = HospitalAnnotation(title: "California Pacific Medical Center",
-                                                  locationName: "California Campus" ,
-                                                  discipline: "General Hospital",
-                                                  rating: 0,
-                                                  coordinate: CLLocationCoordinate2D(latitude: 37.786106, longitude: -122.455958))
         self.mapView.addAnnotation(hospitalAnnotation3)
     }
     
@@ -214,7 +210,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     /*
     *
     * For getting EMwindow ratings of each hospital
-    *
+    * Code is ugly but solely for demonstration purposes
     */
     
     
@@ -373,18 +369,17 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                 
                 if (rating > 100) {
                     rating = 100;
+                } else if (rating < 1) {
+                    rating = 1
                 }
                 
                 // Update annotations with rating
                 if (hospital == 1) {
-//                    MKAnnotationView *annotationView = (id)[mapView viewForAnnotation:annotation];
-//                    if (annotationView) {
-//                        // annotation view for this annotation is available
-//                    }
+                    self.hospitalAnnotation1.rating = Int(rating)
                 } else if (hospital == 2) {
-
+                    self.hospitalAnnotation2.rating = Int(rating)
                 } else {
-
+                    self.hospitalAnnotation3.rating = Int(rating)
                 }
         }
     }
@@ -475,7 +470,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                         locationName = "\(locationName) - "
                     }
                     
-                    let hospitalAnnotation = CustomAnnotation(title: name,
+                    let hospitalAnnotation = HospitalAnnotation(title: name,
                                           locationName: "\(locationName)\(type)" ,
                                           discipline: type,
                                           rating: 0,
@@ -494,7 +489,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
 extension HospitalMap: MKMapViewDelegate {
     // Displays callout when user taps on annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? CustomAnnotation else { return nil }
+        guard let annotation = annotation as? HospitalAnnotation else { return nil }
         let identifier = "marker"
         var view: MKMarkerAnnotationView
 
@@ -521,7 +516,7 @@ extension HospitalMap: MKMapViewDelegate {
     // Takes user to Apple Maps app when user taps info button on callout
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! CustomAnnotation
+        let location = view.annotation as! HospitalAnnotation
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMaps(launchOptions: launchOptions)
     }
