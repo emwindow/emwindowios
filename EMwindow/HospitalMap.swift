@@ -27,6 +27,13 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var timeUpdater = Timer()
     var defaultTimeInterval: Int = 2
     
+    // Whichever annotation the user has selected
+    var selectedAnnotation: HospitalAnnotation = HospitalAnnotation(title: "Other",
+                                                                    locationName: "Other" ,
+                                                                    discipline: "Other",
+                                                                    rating: 0,
+                                                                    coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
+    
     // Hospital 1: UCSF Medical Center
     var day1: Int = 1
     var month1: Int = 8
@@ -380,11 +387,49 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                 
                 // Update annotations with rating
                 if (hospital == 1) {
-                    self.hospitalAnnotation1.rating = Int(rating)
+                    if (self.selectedAnnotation != self.hospitalAnnotation1) {
+                        let temp: HospitalAnnotation = HospitalAnnotation(title: "UCSF Medical Center",
+                                                                          locationName: "Main Campus" ,
+                                                                          discipline: "General Hospital",
+                                                                          rating: Int(rating),
+                                                                          coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
+                        
+                        self.mapView.addAnnotation(temp)
+                        self.mapView.removeAnnotation(self.hospitalAnnotation1)
+                        self.hospitalAnnotation1 = temp
+                    } else {
+                        self.hospitalAnnotation1.rating = Int(rating)
+                    }
                 } else if (hospital == 2) {
-                    self.hospitalAnnotation2.rating = Int(rating)
+                    if (self.selectedAnnotation != self.hospitalAnnotation2) {
+                        let temp: HospitalAnnotation = HospitalAnnotation(title: "St. Mary's Medical Center",
+                                                                                         locationName: "Main Campus" ,
+                                                                                         discipline: "General Hospital",
+                                                                                         rating: Int(rating),
+                                                                                         coordinate: CLLocationCoordinate2D(latitude: 37.7739108, longitude: -122.4544917))
+                        
+                        self.mapView.addAnnotation(temp)
+                        self.mapView.removeAnnotation(self.hospitalAnnotation2)
+                        self.hospitalAnnotation2 = temp
+                    } else {
+                        self.hospitalAnnotation2.rating = Int(rating)
+                    }
                 } else {
                     self.hospitalAnnotation3.rating = Int(rating)
+                    
+                    if (self.selectedAnnotation != self.hospitalAnnotation3) {
+                        let temp: HospitalAnnotation = HospitalAnnotation(title: "California Pacific Medical Center",
+                                                                                         locationName: "California Campus" ,
+                                                                                         discipline: "General Hospital",
+                                                                                         rating: Int(rating),
+                                                                                         coordinate: CLLocationCoordinate2D(latitude: 37.786106, longitude: -122.455958))
+                        
+                        self.mapView.addAnnotation(temp)
+                        self.mapView.removeAnnotation(self.hospitalAnnotation3)
+                        self.hospitalAnnotation3 = temp
+                    } else {
+                        self.hospitalAnnotation3.rating = Int(rating)
+                    }
                 }
         }
     }
@@ -525,8 +570,23 @@ extension HospitalMap: MKMapViewDelegate {
         
         view.glyphText = "H"
         view.markerTintColor = UIColor.red
+        view.subtitleVisibility = MKFeatureVisibility.visible
         
         return view
+    }
+    
+    // Know which callout user has selected
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        // If user is selected than set selected annotation as another hospital so all hospitals refresh ratings
+        let otherHospitalAnnotation: HospitalAnnotation = HospitalAnnotation(title: "Other",
+                                                                             locationName: "Other" ,
+                                                                             discipline: "Other",
+                                                                             rating: 0,
+                                                                             coordinate: CLLocationCoordinate2D(latitude: 30, longitude: -120))
+        
+        
+        self.selectedAnnotation = view.annotation as? HospitalAnnotation ?? otherHospitalAnnotation
     }
     
     // Takes user to Apple Maps app when user taps info button on callout
