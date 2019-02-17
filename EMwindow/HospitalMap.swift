@@ -498,13 +498,14 @@ extension HospitalMap: MKMapViewDelegate {
         var view: MKMarkerAnnotationView
         
         // Set users simulated location with custom annotation
-//        if ((annotation as? UserAnnotation) != nil) {
-//            view = MKPointAnnotation
-//            view.canShowCallout = false
-//            view.image = UIImage(named: "userLocation")
-//
-//            return view
-//        }
+        if ((annotation as? UserAnnotation) != nil) {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = false
+            view.markerTintColor = UIColor.blue
+            view.glyphImage = UIImage(named: "user")
+
+            return view
+        }
         
         guard let annotation = annotation as? HospitalAnnotation else { return nil }
 
