@@ -13,6 +13,7 @@
 		65325B3121026C970063C460 /* HospitalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65325B3021026C970063C460 /* HospitalMap.swift */; };
 		6565B505211B7EF100FC9836 /* HospitalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6565B504211B7EF100FC9836 /* HospitalAnnotation.swift */; };
 		65962049218FDE6500C6C23D /* HospitalInfoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */; };
+		659C69F12218C2C400BFC824 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C69F02218C2C400BFC824 /* UserAnnotation.swift */; };
 		65F377E620B0C18B00796EDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F377E520B0C18B00796EDF /* AppDelegate.swift */; };
 		65F377E820B0C18B00796EDF /* HospitalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F377E720B0C18B00796EDF /* HospitalInfo.swift */; };
 		65F377EB20B0C18B00796EDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F377E920B0C18B00796EDF /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		65325B3021026C970063C460 /* HospitalMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMap.swift; sourceTree = "<group>"; };
 		6565B504211B7EF100FC9836 /* HospitalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalAnnotation.swift; sourceTree = "<group>"; };
 		65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalInfoSettings.swift; sourceTree = "<group>"; };
+		659C69F02218C2C400BFC824 /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		65F377E220B0C18B00796EDF /* EMwindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMwindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F377E520B0C18B00796EDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F377E720B0C18B00796EDF /* HospitalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalInfo.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -78,6 +80,7 @@
 				65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */,
 				65325B3021026C970063C460 /* HospitalMap.swift */,
 				6565B504211B7EF100FC9836 /* HospitalAnnotation.swift */,
+				659C69F02218C2C400BFC824 /* UserAnnotation.swift */,
 				65F377E920B0C18B00796EDF /* Main.storyboard */,
 				6531341A2119120F00E0B103 /* Launch Screen.storyboard */,
 				65F377EC20B0C18E00796EDF /* Assets.xcassets */,
@@ -229,6 +232,7 @@
 				6565B505211B7EF100FC9836 /* HospitalAnnotation.swift in Sources */,
 				65325B3121026C970063C460 /* HospitalMap.swift in Sources */,
 				65325B2F210264940063C460 /* HomeScreen.swift in Sources */,
+				659C69F12218C2C400BFC824 /* UserAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

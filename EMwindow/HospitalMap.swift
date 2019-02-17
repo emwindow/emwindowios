@@ -129,6 +129,11 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
         
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(coordinateRegion, animated: true)
+        
+        let userAnnotation: UserAnnotation = UserAnnotation(title: "",
+                                                            coordinate: CLLocationCoordinate2D(latitude: userLat, longitude: userLong))
+        
+        self.mapView.addAnnotation(userAnnotation)
     }
     
     //
@@ -489,9 +494,19 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
 extension HospitalMap: MKMapViewDelegate {
     // Displays callout when user taps on annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? HospitalAnnotation else { return nil }
         let identifier = "marker"
         var view: MKMarkerAnnotationView
+        
+        // Set users simulated location with custom annotation
+//        if ((annotation as? UserAnnotation) != nil) {
+//            view = MKPointAnnotation
+//            view.canShowCallout = false
+//            view.image = UIImage(named: "userLocation")
+//
+//            return view
+//        }
+        
+        guard let annotation = annotation as? HospitalAnnotation else { return nil }
 
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             as? MKMarkerAnnotationView {
