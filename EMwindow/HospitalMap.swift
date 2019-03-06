@@ -32,7 +32,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                                                                     locationName: "Other" ,
                                                                     discipline: "Other",
                                                                     rating: 0,
-                                                                    coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
+                                                                    availableBeds: 34,
+                                                                    coordinate: CLLocationCoordinate2D(latitude: 37.773957, longitude: -122.453568))
     
     // Hospital 1: UCSF Medical Center
     var day1: Int = 1
@@ -40,13 +41,15 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var year1: Int = 2018
     var hour1: Int = 9
     var minute1: Int = 0
+    var availableBeds1: Int = 34
     var arrivalRateArray1: [Double] = []
     var processTimeArray1: [Double] = []
     var hospitalAnnotation1: HospitalAnnotation = HospitalAnnotation(title: "UCSF Medical Center",
                                                                locationName: "Main Campus" ,
                                                                discipline: "General Hospital",
                                                                rating: 0,
-                                                               coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
+                                                               availableBeds: 0,
+                                                               coordinate: CLLocationCoordinate2D(latitude: 37.763078, longitude: -122.457724))
     
     // Hospital 2: UCSF Medical Center
     var day2: Int = 2
@@ -54,13 +57,15 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var year2: Int = 2018
     var hour2: Int = 9
     var minute2: Int = 0
+    var availableBeds2: Int = 34
     var arrivalRateArray2: [Double] = []
     var processTimeArray2: [Double] = []
     var hospitalAnnotation2: HospitalAnnotation = HospitalAnnotation(title: "St. Mary's Medical Center",
                                                                                      locationName: "Main Campus" ,
                                                                                      discipline: "General Hospital",
                                                                                      rating: 0,
-                                                                                     coordinate: CLLocationCoordinate2D(latitude: 37.7739108, longitude: -122.4544917))
+                                                                                     availableBeds: 0,
+                                                                                     coordinate: CLLocationCoordinate2D(latitude: 37.773957, longitude: -122.453568))
     
     // Hospital 3: UCSF Medical Center
     var day3: Int = 3
@@ -68,13 +73,15 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var year3: Int = 2018
     var hour3: Int = 9
     var minute3: Int = 0
+    var availableBeds3: Int = 34
     var arrivalRateArray3: [Double] = []
     var processTimeArray3: [Double] = []
     var hospitalAnnotation3: HospitalAnnotation = HospitalAnnotation(title: "California Pacific Medical Center",
                                                                                      locationName: "California Campus" ,
                                                                                      discipline: "General Hospital",
                                                                                      rating: 0,
-                                                                                     coordinate: CLLocationCoordinate2D(latitude: 37.786106, longitude: -122.455958))
+                                                                                     availableBeds: 0,
+                                                                                     coordinate: CLLocationCoordinate2D(latitude: 37.786613, longitude: -122.456148))
     
     
     
@@ -117,7 +124,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     //
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first!
-        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 3000, longitudinalMeters: 2000)
         mapView.setRegion(coordinateRegion, animated: true)
         userLat = location.coordinate.latitude
         userLong = location.coordinate.longitude
@@ -343,6 +350,35 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                 
                 let capacityUtilization = (value as! NSNumber) as! Double
                 
+                self.getAvailableBeds(hospital: hospital, capacityUtilization: capacityUtilization)
+        }
+    }
+    
+    //
+    // Purpose: GET number of Available Beds
+    //
+    func getAvailableBeds(hospital: Int, capacityUtilization: Double) {
+        Alamofire.request("https://emwindow.herokuapp.com/getAvailableBeds",
+                          parameters: ["capacityUtilization": capacityUtilization, "totalBeds": totalBeds],
+                          headers: ["Content-type": "application/x-www-form-urlencoded"])
+            
+            .responseJSON { response in
+                guard response.result.isSuccess,
+                    let value = response.result.value else {
+                        print("Error while fetching tags: \(String(describing: response.result.error))")
+                        return
+                }
+                
+                let availableBeds = value as! Double
+                
+                if (hospital == 1) {
+                    self.availableBeds1 = Int(round(availableBeds))
+                } else if (hospital == 2) {
+                    self.availableBeds2 = Int(round(availableBeds))
+                } else {
+                    self.availableBeds3 = Int(round(availableBeds))
+                }
+                
                 self.getEMwindowRating(hospital: hospital, capacityUtilization: capacityUtilization)
         }
     }
@@ -392,7 +428,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                                                                           locationName: "Main Campus" ,
                                                                           discipline: "General Hospital",
                                                                           rating: Int(rating),
-                                                                          coordinate: CLLocationCoordinate2D(latitude: 37.763159, longitude: -122.457850))
+                                                                          availableBeds: self.availableBeds1,
+                                                                          coordinate: CLLocationCoordinate2D(latitude: 37.763078, longitude: -122.457724))
                         
                         self.mapView.addAnnotation(temp)
                         self.mapView.removeAnnotation(self.hospitalAnnotation1)
@@ -406,7 +443,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                                                                                          locationName: "Main Campus" ,
                                                                                          discipline: "General Hospital",
                                                                                          rating: Int(rating),
-                                                                                         coordinate: CLLocationCoordinate2D(latitude: 37.7739108, longitude: -122.4544917))
+                                                                                         availableBeds: self.availableBeds2,
+                                                                                         coordinate: CLLocationCoordinate2D(latitude: 37.773957, longitude: -122.453568))
                         
                         self.mapView.addAnnotation(temp)
                         self.mapView.removeAnnotation(self.hospitalAnnotation2)
@@ -422,7 +460,8 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                                                                                          locationName: "California Campus" ,
                                                                                          discipline: "General Hospital",
                                                                                          rating: Int(rating),
-                                                                                         coordinate: CLLocationCoordinate2D(latitude: 37.786106, longitude: -122.455958))
+                                                                                         availableBeds: self.availableBeds3,
+                                                                                         coordinate: CLLocationCoordinate2D(latitude: 37.786613, longitude: -122.456148))
                         
                         self.mapView.addAnnotation(temp)
                         self.mapView.removeAnnotation(self.hospitalAnnotation3)
@@ -524,6 +563,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
                                           locationName: "\(locationName)\(type)" ,
                                           discipline: type,
                                           rating: 0,
+                                          availableBeds: self.totalBeds,
                                           coordinate: CLLocationCoordinate2D(latitude: lat!, longitude: long!))
                     self.mapView.addAnnotation(hospitalAnnotation)
                 }
@@ -583,6 +623,7 @@ extension HospitalMap: MKMapViewDelegate {
                                                                              locationName: "Other" ,
                                                                              discipline: "Other",
                                                                              rating: 0,
+                                                                             availableBeds: self.totalBeds,
                                                                              coordinate: CLLocationCoordinate2D(latitude: 30, longitude: -120))
         
         

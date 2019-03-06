@@ -15,23 +15,25 @@ class HospitalAnnotation: NSObject, MKAnnotation {
     let locationName: String
     let discipline: String
     var rating: Int
+    var availableBeds: Int
     let coordinate: CLLocationCoordinate2D
     var imageName: String? {
         return "hospitalAnnotation"
     }
     
-    init(title: String, locationName: String, discipline: String, rating: Int, coordinate: CLLocationCoordinate2D) {
+    init(title: String, locationName: String, discipline: String, rating: Int, availableBeds: Int, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.locationName = locationName
         self.discipline = discipline
         self.rating = rating
+        self.availableBeds = availableBeds
         self.coordinate = coordinate
         
         super.init()
     }
     
     var subtitle: String? {
-        return "EMwindow Rating: \(rating)"
+        return "EMwindow Rating: \(rating) \n Available Beds: \(availableBeds)"
     }
     
     // Annotation right callout accessory opens this mapItem in Maps app
