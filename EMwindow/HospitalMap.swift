@@ -30,6 +30,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     var defaultTimeInterval: Int = 2
     
     // City score variables
+    @IBOutlet weak var cityScoreView: UIView!
     @IBOutlet weak var cityScoreLabel: UILabel!
     @IBOutlet weak var cityAvailableMedSurgBeds: UILabel!
     @IBOutlet weak var cityAvailableOperationRoomBeds: UILabel!
@@ -531,13 +532,71 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     }
     
     //
+    // Purpose: To figure out what hospitals are currently visible by the user
+    //
+    func hospitalVisible(hospital: Int) -> Bool {
+        
+        let mRect = self.mapView.visibleMapRect
+        
+        let neMapPoint = MKMapPoint(x: mRect.maxX, y: mRect.minY)
+        let swMapPoint = MKMapPoint(x: mRect.minX, y: mRect.maxY)
+        
+        let neCoordinate = neMapPoint.coordinate
+        let swCoordinate = swMapPoint.coordinate
+        
+        let maxLat = neCoordinate.latitude
+        let maxLong = neCoordinate.longitude
+        let minLat = swCoordinate.latitude
+        let minLong = swCoordinate.longitude
+        
+        var lat: CLLocationDegrees
+        var long: CLLocationDegrees
+        
+        if (hospital == 1) {
+            lat = hospitalAnnotation1.coordinate.latitude
+            long = hospitalAnnotation1.coordinate.longitude
+        } else if (hospital == 2) {
+            lat = hospitalAnnotation2.coordinate.latitude
+            long = hospitalAnnotation2.coordinate.longitude
+        } else {
+            lat = hospitalAnnotation3.coordinate.latitude
+            long = hospitalAnnotation3.coordinate.longitude
+        }
+        
+        return (lat >= minLat && lat <= maxLat && long >= minLong && long <= maxLong)
+    }
+    
+    //
     // Purpose: To calculate the city score
     //
     func updateCityAvailableBeds() {
-        let totalMedSurgBeds = hospitalAnnotation1.availableMedSurgBeds + hospitalAnnotation2.availableMedSurgBeds + hospitalAnnotation3.availableMedSurgBeds
-        let totalOperationRoomBeds = hospitalAnnotation1.availableOperationRoomBeds + hospitalAnnotation2.availableOperationRoomBeds + hospitalAnnotation3.availableOperationRoomBeds
-        let totalIntensiveCareUnitBeds = hospitalAnnotation1.availableIntensiveCareUnitBeds + hospitalAnnotation2.availableIntensiveCareUnitBeds + hospitalAnnotation3.availableIntensiveCareUnitBeds
-        let totalEmergencyDepartmentBeds = hospitalAnnotation1.availableEmergencyDepartmentBeds + hospitalAnnotation2.availableEmergencyDepartmentBeds + hospitalAnnotation3.availableEmergencyDepartmentBeds
+        
+        var totalMedSurgBeds = 0
+        var totalOperationRoomBeds = 0
+        var totalIntensiveCareUnitBeds = 0
+        var totalEmergencyDepartmentBeds = 0
+        
+        
+        if (hospitalVisible(hospital: 1)) {
+            totalMedSurgBeds += hospitalAnnotation1.availableMedSurgBeds
+            totalOperationRoomBeds += hospitalAnnotation1.availableOperationRoomBeds
+            totalIntensiveCareUnitBeds += hospitalAnnotation1.availableIntensiveCareUnitBeds
+            totalEmergencyDepartmentBeds += hospitalAnnotation1.availableEmergencyDepartmentBeds
+        }
+        
+        if (hospitalVisible(hospital: 2)) {
+            totalMedSurgBeds += hospitalAnnotation2.availableMedSurgBeds
+            totalOperationRoomBeds += hospitalAnnotation2.availableOperationRoomBeds
+            totalIntensiveCareUnitBeds += hospitalAnnotation2.availableIntensiveCareUnitBeds
+            totalEmergencyDepartmentBeds += hospitalAnnotation2.availableEmergencyDepartmentBeds
+        }
+        
+        if (hospitalVisible(hospital: 3)) {
+            totalMedSurgBeds += hospitalAnnotation3.availableMedSurgBeds
+            totalOperationRoomBeds += hospitalAnnotation3.availableOperationRoomBeds
+            totalIntensiveCareUnitBeds += hospitalAnnotation3.availableIntensiveCareUnitBeds
+            totalEmergencyDepartmentBeds += hospitalAnnotation3.availableEmergencyDepartmentBeds
+        }
         
         cityAvailableMedSurgBeds.text = String(totalMedSurgBeds)
         cityAvailableOperationRoomBeds.text = String(totalOperationRoomBeds)
@@ -550,11 +609,24 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     //
     func updateCityScore() {
         var sum = 0
-        sum += hospitalAnnotation1.rating
-        sum += hospitalAnnotation2.rating
-        sum += hospitalAnnotation3.rating
+        var count = 0
         
-        let average = sum / 3
+        if (hospitalVisible(hospital: 1)) {
+            sum += hospitalAnnotation1.rating
+            count += 1
+        }
+        
+        if (hospitalVisible(hospital: 2)) {
+            sum += hospitalAnnotation2.rating
+            count += 1
+        }
+        
+        if (hospitalVisible(hospital: 3)) {
+            sum += hospitalAnnotation3.rating
+            count += 1
+        }
+        
+        let average = sum / count
         
         cityScoreLabel.text = String(average)
     }
