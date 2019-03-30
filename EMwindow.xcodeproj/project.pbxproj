@@ -12,7 +12,6 @@
 		65325B2F210264940063C460 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65325B2E210264940063C460 /* HomeScreen.swift */; };
 		65325B3121026C970063C460 /* HospitalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65325B3021026C970063C460 /* HospitalMap.swift */; };
 		6565B505211B7EF100FC9836 /* HospitalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6565B504211B7EF100FC9836 /* HospitalAnnotation.swift */; };
-		65962049218FDE6500C6C23D /* HospitalInfoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */; };
 		659C69F12218C2C400BFC824 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C69F02218C2C400BFC824 /* UserAnnotation.swift */; };
 		65A8DB3D2239C2AD005DF489 /* HospitalAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8DB3C2239C2AD005DF489 /* HospitalAnnotationView.swift */; };
 		65A8DB442239C7AE005DF489 /* HospitalDetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8DB432239C7AE005DF489 /* HospitalDetailMapView.swift */; };
@@ -29,7 +28,6 @@
 		65325B2E210264940063C460 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		65325B3021026C970063C460 /* HospitalMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMap.swift; sourceTree = "<group>"; };
 		6565B504211B7EF100FC9836 /* HospitalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalAnnotation.swift; sourceTree = "<group>"; };
-		65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalInfoSettings.swift; sourceTree = "<group>"; };
 		659C69F02218C2C400BFC824 /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		65A8DB3C2239C2AD005DF489 /* HospitalAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalAnnotationView.swift; sourceTree = "<group>"; };
 		65A8DB422239C7AD005DF489 /* HospitalDetailMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HospitalDetailMapView.xib; path = /Users/samhollingsworth/Documents/iOSApps/EMwindow/emWindowiOS/EMwindow/HospitalDetailMapView.xib; sourceTree = "<absolute>"; };
@@ -82,7 +80,6 @@
 				65F377E520B0C18B00796EDF /* AppDelegate.swift */,
 				65325B2E210264940063C460 /* HomeScreen.swift */,
 				65F377E720B0C18B00796EDF /* HospitalInfo.swift */,
-				65962048218FDE6500C6C23D /* HospitalInfoSettings.swift */,
 				65325B3021026C970063C460 /* HospitalMap.swift */,
 				6565B504211B7EF100FC9836 /* HospitalAnnotation.swift */,
 				65A8DB3C2239C2AD005DF489 /* HospitalAnnotationView.swift */,
@@ -151,7 +148,7 @@
 				TargetAttributes = {
 					65F377E120B0C18B00796EDF = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -237,7 +234,6 @@
 				65F377E820B0C18B00796EDF /* HospitalInfo.swift in Sources */,
 				65A8DB3D2239C2AD005DF489 /* HospitalAnnotationView.swift in Sources */,
 				65F377E620B0C18B00796EDF /* AppDelegate.swift in Sources */,
-				65962049218FDE6500C6C23D /* HospitalInfoSettings.swift in Sources */,
 				6565B505211B7EF100FC9836 /* HospitalAnnotation.swift in Sources */,
 				65325B3121026C970063C460 /* HospitalMap.swift in Sources */,
 				65A8DB442239C7AE005DF489 /* HospitalDetailMapView.swift in Sources */,
@@ -388,7 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = caretrails.EMwindow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -407,7 +403,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = caretrails.EMwindow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -151,6 +151,7 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
         loadData(day: day2, month: month2, year: year2, hour: hour2, minute: minute2, hospital: 2)
         loadData(day: day3, month: month3, year: year3, hour: hour3, minute: minute3, hospital: 3)
         
+        simulateUser()
         //centerOnUser()
     }
     
@@ -181,6 +182,27 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
     }
     
     //
+    // Purpose: To return to the homepage
+    //
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //
+    // Purpose: To hide the city score view
+    //
+    @IBAction func cancelCityScoreView(_ sender: Any) {
+        cityScoreView.isHidden = true
+    }
+    
+    //
+    // Purpose: To show city score view
+    //
+    @IBAction func showCityScoreView(_ sender: Any) {
+        cityScoreView.isHidden = false
+    }
+    
+    //
     // Purpose: To simulate user in San Francisco
     //
     func simulateUser() {
@@ -190,10 +212,10 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(coordinateRegion, animated: true)
         
-        let userAnnotation: UserAnnotation = UserAnnotation(title: "",
-                                                            coordinate: CLLocationCoordinate2D(latitude: userLat, longitude: userLong))
+//        let userAnnotation: UserAnnotation = UserAnnotation(title: "",
+//                                                            coordinate: CLLocationCoordinate2D(latitude: userLat, longitude: userLong))
         
-        self.mapView.addAnnotation(userAnnotation)
+        //self.mapView.addAnnotation(userAnnotation)
     }
     
     //
@@ -626,7 +648,11 @@ class HospitalMap: UIViewController, CLLocationManagerDelegate {
             count += 1
         }
         
-        let average = sum / count
+        var average = 0
+        
+        if (count != 0) {
+            average = sum / count
+        }
         
         cityScoreLabel.text = String(average)
     }

@@ -135,6 +135,13 @@ class HospitalInfo: UIViewController {
     }
     
     //
+    // Purpose: To return to the home page
+    //
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //
     // Purpose: Load data
     //
     func loadData() {
