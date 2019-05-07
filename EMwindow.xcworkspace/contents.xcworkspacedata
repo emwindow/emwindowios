@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/samhollingsworth/Documents/iOSApps/EMwindow/emWindowiOS/EMwindow/HospitalDetailMapView.xib">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/samhollingsworth/Documents/iOSApps/EMwindow/emWindowiOS/EMwindow/HospitalDetailMapView.swift">
-   </FileRef>
-   <FileRef
       location = "group:EMwindow.xcodeproj">
    </FileRef>
    <FileRef

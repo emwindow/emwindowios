@@ -23,6 +23,7 @@ class HospitalInfo: UIViewController {
     @IBOutlet weak var emWindowRatingLabel: UILabel!
     @IBOutlet weak var timeSelecter: UISlider!
     @IBOutlet weak var lineChart: LineChartView!
+    @IBOutlet weak var clinicalLoadLabel: UILabel!
     
     // VARIABLES
     var day: Int = 1
@@ -39,6 +40,8 @@ class HospitalInfo: UIViewController {
     var arrivalRateArrayGraph: [Double] = []                                    // Had to add this in order to graph the arrival rates
     var processTimeArray: [Double] = []
     var processTimeArrayGraph: [Double] = []                                    // Had to add this in order to graph the process times
+    var clinicalLoadArray: [Double] = []
+    var clinicalLoadArrayGraph: [Double] = []                                   // Had to add this in order to graph the clinical load
     var ratingsArray: [Double] = []
     
     var timeUpdater = Timer()
@@ -146,12 +149,11 @@ class HospitalInfo: UIViewController {
     //
     func loadData() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        hospitalNameLabel.text = hospital
-        
+                
         getArrivalRateArray()
         getProcessTimeArray()
         getCapacityUtilization()
+        getClinicalLoadArray()
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
@@ -242,7 +244,6 @@ class HospitalInfo: UIViewController {
                 self.capacityUtilizationArrayGraph.append(truncated)
                 
                 self.getAvailableBeds()
-                self.getEMwindowRating()
         }
     }
     
@@ -268,11 +269,37 @@ class HospitalInfo: UIViewController {
     }
     
     //
+    // Purpose: GET arrival rate array
+    //
+    func getClinicalLoadArray() {
+        Alamofire.request("https://emwindow.herokuapp.com/getClinicalLoadArray",
+                          parameters: ["hospital": hospitalNoSpaces, "month": month,
+                                       "day": day, "year": year, "hour": hour, "minute": minute],
+                          headers: ["Content-type": "application/x-www-form-urlencoded"])
+            
+            .responseJSON { response in
+                guard response.result.isSuccess,
+                    let value = response.result.value else {
+                        print("Error while fetching tags: \(String(describing: response.result.error))")
+                        return
+                }
+                                
+                self.clinicalLoadArray = (value as! NSArray) as! [Double]
+                self.clinicalLoadArrayGraph.append(self.clinicalLoadArray[0])
+                let truncated = self.truncateDouble(decimalNum: (self.clinicalLoadArray[0]))
+                self.clinicalLoadLabel.text = "\(String(truncated)) %"
+                
+                print("Clinical Load: \(self.clinicalLoadArray[0])")
+                self.getEMwindowRating()
+        }
+    }
+    
+    //
     // Purpose: GET Rating
     //
     func getEMwindowRating() {
         Alamofire.request("https://emwindow.herokuapp.com/getEMwindowRating",
-                          parameters: ["arrivalRateArray": JSON(arrivalRateArray), "processTimeArray": JSON(processTimeArray), "capacityUtilization": capacityUtilization],
+                          parameters: ["arrivalRateArray": JSON(arrivalRateArray), "processTimeArray": JSON(processTimeArray), "capacityUtilization": capacityUtilization, "clinicalLoadArray": JSON(clinicalLoadArray)],
                           headers: ["Content-type": "application/x-www-form-urlencoded"])
             
             .responseJSON { response in
@@ -391,6 +418,22 @@ class HospitalInfo: UIViewController {
         line4.colors = [NSUIColor.green]
         lineChart.noDataText = "No data is currently available"
 
+        // Create fifth line for clinical Load
+        var yVals5 : [ChartDataEntry] = [ChartDataEntry]()
+        for i in 0..<clinicalLoadArrayGraph.count {
+            yVals5.append(ChartDataEntry(x: Double(i), y: clinicalLoadArrayGraph[i]))
+        }
+        
+        let line5 = LineChartDataSet(values: yVals5, label: "Rating")
+        line5.mode = .cubicBezier
+        line5.cubicIntensity = 0.1
+        line5.lineWidth = 3.0
+        line5.drawCirclesEnabled = false
+        line5.fillColor = NSUIColor.blue
+        line5.drawFilledEnabled = false
+        
+        line5.colors = [NSUIColor.magenta]
+        lineChart.noDataText = "No data is currently available"
         
         
         //Create object that will be added to lineChart
@@ -400,6 +443,7 @@ class HospitalInfo: UIViewController {
         data.addDataSet(line2)
         data.addDataSet(line3)
         data.addDataSet(line4)
+        data.addDataSet(line5)
         // Add data to lineChart
         lineChart.data = data
         

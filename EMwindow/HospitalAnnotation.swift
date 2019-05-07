@@ -44,7 +44,7 @@ class HospitalAnnotation: NSObject, MKAnnotation {
     }
     
     var subtitle: String? {
-        return "Rating: \(rating), MS: \(availableMedSurgBeds), OR: \(availableOperationRoomBeds), ICU: \(availableIntensiveCareUnitBeds), ED: \(availableEmergencyDepartmentBeds)"
+        return "ED Congestion: \(rating), MS: \(availableMedSurgBeds), OR: \(availableOperationRoomBeds), ICU: \(availableIntensiveCareUnitBeds), ED: \(availableEmergencyDepartmentBeds)"
     }
     
     // Annotation right callout accessory opens this mapItem in Maps app
